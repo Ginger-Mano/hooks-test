@@ -1,12 +1,29 @@
 
 import './App.css';
+import Artists from "./Artists"
+import React, { useState, useEffect } from "react"
 
-function App() {
+
+
+export default function App() {
+  const [musicArtist, setMusicArtist] = useState({})
+
+  useEffect(() => {
+    fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_API_KEY}&format=json`)
+      .then((response) => response.json())
+      .then((musicArtist) => {
+        setMusicArtist(musicArtist.artists.artist);;
+      });
+  }, []);
+
+  console.log(musicArtist);
+  const musicians = useState(musicArtist).map(musician => console.log(musician))
   return (
     <div className="App">
       <h1>start</h1>
+      <h1>{musicians}</h1>
     </div>
-  );
+  )
 }
 
-export default App;
+
