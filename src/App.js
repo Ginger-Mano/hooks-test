@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react"
 
 
 export default function App() {
-  const [musicArtist, setMusicArtist] = useState({})
+  const [musicArtist, setMusicArtist] = useState([])
 
   useEffect(() => {
     fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_API_KEY}&format=json`)
@@ -17,11 +17,10 @@ export default function App() {
   }, []);
 
   console.log(musicArtist);
-  const musicians = useState(musicArtist).map(musician => console.log(musician))
   return (
     <div className="App">
       <h1>start</h1>
-      <h1>{musicians}</h1>
+      <Artists musicArtist={musicArtist} />
     </div>
   )
 }

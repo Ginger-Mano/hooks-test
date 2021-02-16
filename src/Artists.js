@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
+import Musicians from "./Musicians"
 
 function Artists(props) {
     console.log(props);
+    const musicians = props.musicArtist.map(musician => <Musicians musician={musician} key={musician.id} />)
     return (
         <div>
-            <h1>hey</h1>
+            {musicians}
         </div>
     )
 }
