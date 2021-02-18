@@ -1,6 +1,7 @@
 
 import './App.css';
 import Artists from "./Artists"
+import Input from "./Input"
 import React, { useState, useEffect } from "react"
 
 
@@ -21,6 +22,7 @@ export default function App() {
     <div className="App">
       <h1>start</h1>
       <Artists musicArtist={musicArtist} />
+      <Input />
     </div>
   )
 }
